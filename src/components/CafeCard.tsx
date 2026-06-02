@@ -28,8 +28,8 @@ export function CafeCard({ cafe }: CafeCardProps) {
                 <ul className={styles.tags}>
                     <li>{noiseLevelLabels[cafe.noiseLevel]}</li>
                     {cafe.hasWifi && <li>Wi-Fi</li>}
-                    {cafe.hasPowerOutlets} && <li>Zásuvky</li>
-                    {cafe.isBookFriendly} && <li>Vhodné na čtení</li>
+                    {cafe.hasPowerOutlets && <li>Zásuvky</li>}
+                    {cafe.isBookFriendly && <li>Vhodné na čtení</li>}
                 </ul>
             </div>
         </article>
