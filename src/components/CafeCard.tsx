@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import type { Cafe } from '@/types/cafe.types';
+import { FavoriteButton } from '@/components/FavoriteButton';
 import styles from './CafeCard.module.css';
 
 type CafeCardProps = {
@@ -33,9 +34,13 @@ export function CafeCard({ cafe }: CafeCardProps) {
                     {cafe.isBookFriendly && <li>Vhodné na čtení</li>}
                 </ul>
 
-                <Link className={styles.detailLink} to={`/cafes/${cafe.id}`}>
-                    Zobrazit detail
-                </Link>
+                <div className={styles.actions}>
+                    <FavoriteButton cafeId={cafe.id} />
+
+                    <Link className={styles.detailLink} to={`/cafes/${cafe.id}`}>
+                        Zobrazit detail
+                    </Link>
+                </div>
             </div>
         </article>
     );

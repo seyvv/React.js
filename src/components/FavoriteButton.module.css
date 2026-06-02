@@ -1,0 +1,21 @@
+.button {
+    display: inline-flex;
+    width: fit-content;
+    border: 1px solid var(--accent-border);
+    border-radius: 999px;
+    padding: 8px 14px;
+    color: var(--accent);
+    background: var(--accent-bg);
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.button:hover {
+    color: var(--text-heading);
+    border-color: var(--accent);
+}
+
+.button[aria-pressed='true'] {
+    color: var(--text-heading);
+    background: rgba(192, 132, 252, 0.22);
+}

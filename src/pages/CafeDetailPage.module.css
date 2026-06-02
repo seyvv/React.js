@@ -121,6 +121,10 @@
     text-align: left;
 }
 
+.actions {
+    margin-top: 24px;
+}
+
 @media (max-width: 800px) {
     .hero {
         grid-template-columns: 1fr;

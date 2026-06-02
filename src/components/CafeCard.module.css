@@ -70,7 +70,6 @@
 .detailLink {
     display: inline-flex;
     width: fit-content;
-    margin-top: 18px;
     border: 1px solid var(--accent-border);
     border-radius: 999px;
     padding: 8px 14px;
@@ -84,6 +83,13 @@
 .detailLink:hover {
     color: var(--text-heading);
     border-color: var(--accent);
+}
+
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 18px;
 }
 
 @media (max-width: 640px) {

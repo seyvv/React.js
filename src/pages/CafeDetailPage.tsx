@@ -1,5 +1,6 @@
 import { Link, useParams } from 'react-router-dom';
 import { useCafes } from '@/hooks/useCafes';
+import { FavoriteButton } from '@/components/FavoriteButton';
 import styles from './CafeDetailPage.module.css';
 
 const noiseLevelLabels = {
@@ -52,6 +53,10 @@ export function CafeDetailPage() {
                     </div>
 
                     <p className={styles.description}>{cafe.longDescription}</p>
+
+                    <div className={styles.actions}>
+                        <FavoriteButton cafeId={cafe.id} />
+                    </div>
 
                     <ul className={styles.tags}>
                         <li>{noiseLevelLabels[cafe.noiseLevel]}</li>
