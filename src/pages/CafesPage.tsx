@@ -1,4 +1,6 @@
 import { useCafes } from '@/hooks/useCafes';
+import { CafeCard } from '@/components/CafeCard';
+import styles from "./CafesPage.module.css";
 
 export function CafesPage() {
     const { data: cafes = [], isLoading, isError, error } = useCafes();
@@ -15,15 +17,11 @@ export function CafesPage() {
         <section>
             <h1>Kavárny</h1>
 
-            <ul>
+            <div className={styles.grid}>
                 {cafes.map((cafe) => (
-                    <li key={cafe.id}>
-                        <h2>{cafe.name} – {cafe.city}</h2>
-                        <p>{cafe.description}</p>
-                        <img src={cafe.imageUrl} alt={cafe.name} width={200} />
-                    </li>
+                    <CafeCard key={cafe.id} cafe={cafe} />
                 ))}
-            </ul>
+            </div>
         </section>
-    )
+    );
 }
