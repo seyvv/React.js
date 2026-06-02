@@ -1,73 +1,197 @@
-# React + TypeScript + Vite
+# Cozy Pages
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Cozy Pages je vlastní React aplikace pro hledání kaváren vhodných na čtení, studium nebo klidnou práci. Uživatel si může prohlížet seznam kaváren, filtrovat je podle vlastností, otevřít detail konkrétní kavárny a ukládat si oblíbená místa.
 
-Currently, two official plugins are available:
+Projekt vznikl jako semestrální práce v Reactu.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Funkce aplikace
 
-## React Compiler
+* výpis kaváren z JSON dat
+* filtrování kaváren podle města, hlučnosti, Wi-Fi a zásuvek
+* detail konkrétní kavárny
+* ukládání kaváren do oblíbených
+* stránka s oblíbenými kavárnami
+* ukládání oblíbených kaváren do `localStorage`
+* routing mezi stránkami
+* ošetření loading a error stavů při načítání dat
+* stránka pro neexistující URL
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Použité technologie
 
-## Expanding the ESLint configuration
+* React
+* TypeScript
+* Vite
+* React Router
+* TanStack Query
+* Context API
+* CSS Modules
+* Vitest
+* React Testing Library
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Struktura projektu
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+```txt
+src/
+  components/
+    CafeCard.tsx
+    CafeFilters.tsx
+    FavoriteButton.tsx
+    Layout.tsx
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+  context/
+    FavoritesContext.tsx
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+  hooks/
+    useCafes.ts
+
+  pages/
+    CafeDetailPage.tsx
+    CafesPage.tsx
+    FavoritesPage.tsx
+    HomePage.tsx
+    NotFoundPage.tsx
+
+  test/
+    setup.ts
+
+  types/
+    cafe.types.ts
+    cafeFilters.types.ts
+
+  utils/
+    filterCafes.ts
+    filterCafes.test.ts
+
+  App.tsx
+  main.tsx
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Data kaváren jsou uložená v souboru:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```txt
+public/data/cafes.json
 ```
+
+## Routing
+
+Aplikace obsahuje tyto stránky:
+
+| Cesta        | Popis                            |
+| ------------ | -------------------------------- |
+| `/`          | úvodní stránka a výpis kaváren   |
+| `/cafes`     | seznam kaváren s filtrováním     |
+| `/cafes/:id` | detail konkrétní kavárny         |
+| `/favorites` | uložené oblíbené kavárny         |
+| `*`          | stránka 404 pro neexistující URL |
+
+## Data fetching
+
+Načítání dat je řešené pomocí TanStack Query v hooku `useCafes`.
+
+```ts
+useQuery({
+  queryKey: ['cafes'],
+  queryFn: fetchCafes,
+  staleTime: 5 * 60 * 1000,
+});
+```
+
+Data se načítají z lokálního JSON souboru přes:
+
+```ts
+fetch('/data/cafes.json')
+```
+
+## Oblíbené kavárny
+
+Oblíbené kavárny jsou řešené přes `FavoritesContext`.
+
+Context poskytuje:
+
+* `favoriteIds`
+* `toggleFavorite(id)`
+* `isFavorite(id)`
+
+Oblíbené kavárny se ukládají do `localStorage`, takže zůstanou uložené i po obnovení stránky.
+
+## Testy
+
+Projekt obsahuje dva typy testů:
+
+### Unit test
+
+Unit test ověřuje pomocnou funkci `filterCafes`.
+
+Soubor:
+
+```txt
+src/utils/filterCafes.test.ts
+```
+
+Testuje například:
+
+* vrácení všech kaváren při výchozích filtrech
+* filtrování podle města
+* filtrování podle hlučnosti a dostupnosti zásuvek
+
+### Integrační test
+
+Integrační test ověřuje stránku `CafesPage`.
+
+Soubor:
+
+```txt
+src/pages/CafesPage.test.tsx
+```
+
+Test kontroluje, že:
+
+* se kavárny správně načtou a zobrazí
+* uživatel může vybrat město ve filtru
+* po změně filtru se zobrazí jen odpovídající kavárny
+
+## Spuštění projektu
+
+Nejdřív je potřeba nainstalovat závislosti:
+
+```bash
+npm install
+```
+
+Spuštění vývojového serveru:
+
+```bash
+npm run dev
+```
+
+Aplikace se spustí na adrese:
+
+```txt
+http://localhost:5173/
+```
+
+## Spuštění testů
+
+```bash
+npm run test
+```
+
+## Build projektu
+
+```bash
+npm run build
+```
+
+## Co projekt splňuje
+
+| Požadavek          | Splnění v projektu                                                       |
+| ------------------ | ------------------------------------------------------------------------ |
+| Komponenty         | `CafeCard`, `CafeFilters`, `FavoriteButton`, `Layout`                    |
+| Hooks              | `useCafes`, `useFavorites`                                               |
+| Routing            | React Router stránky `/`, `/cafes`, `/cafes/:id`, `/favorites`           |
+| Data fetching      | TanStack Query + `fetch('/data/cafes.json')`                             |
+| TypeScript         | typy `Cafe`, `NoiseLevel`, `CafeFilters`                                 |
+| Unit test          | test funkce `filterCafes`                                                |
+| Integrační test    | test komponenty `CafesPage`                                              |
+| Struktura projektu | rozdělení na `components`, `pages`, `hooks`, `context`, `utils`, `types` |
+| README             | popis projektu, spuštění, technologie, testy                             |
