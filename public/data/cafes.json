@@ -1,0 +1,83 @@
+[
+    {
+        "id": 1,
+        "name": "Kavárna Mezi řádky",
+        "city": "Praha",
+        "address": "Vodičkova 12, Praha",
+        "description": "Tichá kavárna s pohodlnými křesly a knihovnou u stěny.",
+        "longDescription": "Ideální místo pro čtení nebo klidné studium. Kavárna má několik menších stolů, stabilní Wi-Fi a příjemné světlo během dne.",
+        "imageUrl": "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085",
+        "noiseLevel": "quiet",
+        "hasWifi": true,
+        "hasPowerOutlets": true,
+        "isBookFriendly": true,
+        "rating": 4.8,
+        "openingHours": "Po–Pá 8:00–20:00, So–Ne 9:00–18:00",
+        "tags": [
+            "quiet",
+            "wifi",
+            "power outlets",
+            "books"
+        ]
+    },
+    {
+        "id": 2,
+        "name": "Espresso & Pages",
+        "city": "Brno",
+        "address": "Česká 5, Brno",
+        "description": "Moderní kavárna vhodná na práci i rychlé čtení mezi schůzkami.",
+        "longDescription": "Kavárna nabízí dostatek míst k sezení, rychlou Wi-Fi a několik stolů u zásuvek. Přes oběd bývá rušnější.",
+        "imageUrl": "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb",
+        "noiseLevel": "moderate",
+        "hasWifi": true,
+        "hasPowerOutlets": true,
+        "isBookFriendly": true,
+        "rating": 4.4,
+        "openingHours": "Po–Ne 7:30–21:00",
+        "tags": [
+            "wifi",
+            "work friendly",
+            "coffee"
+        ]
+    },
+    {
+        "id": 3,
+        "name": "Tichý Šálek",
+        "city": "Olomouc",
+        "address": "Univerzitní 8, Olomouc",
+        "description": "Malá útulná kavárna s klidnou atmosférou a výběrem knih.",
+        "longDescription": "Tichý Šálek je vhodný hlavně pro čtení a pomalé dopolední studium. Nemá mnoho zásuvek, ale atmosféra je velmi klidná.",
+        "imageUrl": "https://images.unsplash.com/photo-1509042239860-f550ce710b93",
+        "noiseLevel": "quiet",
+        "hasWifi": true,
+        "hasPowerOutlets": false,
+        "isBookFriendly": true,
+        "rating": 4.6,
+        "openingHours": "Po–Pá 9:00–19:00, So 10:00–17:00",
+        "tags": [
+            "quiet",
+            "books",
+            "cozy"
+        ]
+    },
+    {
+        "id": 4,
+        "name": "Urban Brew Hub",
+        "city": "Praha",
+        "address": "Karlínské náměstí 4, Praha",
+        "description": "Živější kavárna vhodná spíš na práci než hluboké čtení.",
+        "longDescription": "Urban Brew Hub má rychlou Wi-Fi, hodně zásuvek a velké pracovní stoly. Během dne zde bývá rušněji.",
+        "imageUrl": "https://images.unsplash.com/photo-1554118811-1e0d58224f24",
+        "noiseLevel": "busy",
+        "hasWifi": true,
+        "hasPowerOutlets": true,
+        "isBookFriendly": false,
+        "rating": 4.1,
+        "openingHours": "Po–Ne 7:00–22:00",
+        "tags": [
+            "wifi",
+            "power outlets",
+            "work friendly"
+        ]
+    }
+]
