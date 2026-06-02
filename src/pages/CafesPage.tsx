@@ -14,8 +14,11 @@ export function CafesPage() {
     }
 
     return (
-        <section>
-            <h1>Kavárny</h1>
+        <section className={styles.section}>
+            <div className={styles.header}>
+                <h2>Doporučené kavárny</h2>
+                <p>Výběr míst, kde si můžeš v klidu číst, učit se nebo vytáhnout notebook bez pocitu, že překážíš.</p>
+            </div>
 
             <div className={styles.grid}>
                 {cafes.map((cafe) => (

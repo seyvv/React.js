@@ -1,15 +1,14 @@
-import { useState } from 'react';
-import styles from './App.module.css';
 import { HomePage } from '@/pages/HomePage';
 import { CafesPage } from '@/pages/CafesPage';
+import { Layout } from '@/components/Layout';
 
 function App() {
 
   return (
-    <main className={styles.app}>
+    <Layout >
       <HomePage />
       <CafesPage />
-    </main>
+    </Layout >
   )
 }
 

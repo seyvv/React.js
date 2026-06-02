@@ -1,3 +1,19 @@
+.section {
+    display: grid;
+    gap: 24px;
+}
+
+.header {
+    display: grid;
+    gap: 8px;
+    text-align: left;
+}
+
+.header p {
+    max-width: 680px;
+    color: var(--text-muted);
+}
+
 .grid {
     display: grid;
     gap: 20px;
