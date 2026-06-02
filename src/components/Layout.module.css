@@ -9,16 +9,43 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px 0 12px;
+    gap: 24px;
+    padding: 20px 0 32px;
 }
 
 .logo {
-    margin: 0;
     color: var(--accent);
     font-size: 2rem;
     font-weight: 700;
     letter-spacing: 0.1em;
+    text-decoration: none;
     text-transform: uppercase;
+}
+
+.nav {
+    display: flex;
+    gap: 12px;
+}
+
+.nav a {
+    border: 1px solid transparent;
+    border-radius: 999px;
+    padding: 8px 14px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.nav a:hover {
+    color: var(--text-heading);
+    background: var(--bg-soft);
+}
+
+.nav a[aria-current='page'] {
+    border-color: var(--accent-border);
+    color: var(--accent);
+    background: var(--accent-bg);
 }
 
 .main {
@@ -29,5 +56,10 @@
 @media (max-width: 640px) {
     .layout {
         padding: 24px 16px 40px;
+    }
+
+    .header {
+        align-items: flex-start;
+        flex-direction: column;
     }
 }

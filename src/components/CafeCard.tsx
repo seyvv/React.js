@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import type { Cafe } from '@/types/cafe.types';
 import styles from './CafeCard.module.css';
 
@@ -31,6 +32,10 @@ export function CafeCard({ cafe }: CafeCardProps) {
                     {cafe.hasPowerOutlets && <li>Zásuvky</li>}
                     {cafe.isBookFriendly && <li>Vhodné na čtení</li>}
                 </ul>
+
+                <Link className={styles.detailLink} to={`/cafes/${cafe.id}`}>
+                    Zobrazit detail
+                </Link>
             </div>
         </article>
     );
