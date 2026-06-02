@@ -1,8 +1,6 @@
 import { NavLink, Outlet } from 'react-router-dom';
 import styles from './Layout.module.css';
 
-// TODO - přidat navigaci
-
 export function Layout() {
     return (
         <div className={styles.layout}>
@@ -16,6 +14,7 @@ export function Layout() {
                         Domů
                     </NavLink>
                     <NavLink to='/cafes'>Kavárny</NavLink>
+                    <NavLink to='/favorites'>Oblíbené</NavLink>
                 </nav>
             </header>
 
